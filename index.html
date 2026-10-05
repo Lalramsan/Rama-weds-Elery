@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Elery & Lalramsan — Wedding Invitation</title>
+<style>
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;font-family:Georgia,'Times New Roman',serif;background:#071b18;color:#fff}
+body{overflow-x:hidden} .screen{min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+#cover{background:radial-gradient(circle at 50% 35%,#16463d 0,#0b2823 42%,#061511 100%)}
+#cover:before,#cover:after{content:"";position:absolute;border:1px solid rgba(236,205,131,.45);border-radius:50%;width:70vw;height:70vw;max-width:620px;max-height:620px;transform:rotate(18deg)}
+#cover:after{width:58vw;height:58vw;max-width:500px;max-height:500px;transform:rotate(-22deg)}
+.flower{position:absolute;font-size:clamp(44px,12vw,100px);opacity:.35;filter:blur(.1px)}
+.f1{top:4%;left:4%} .f2{bottom:4%;right:4%;transform:rotate(180deg)} .f3{top:14%;right:7%;font-size:55px}
+.cover-card{z-index:2;text-align:center;padding:32px 24px;max-width:700px}
+.kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:#ead69a}
+h1{font-size:clamp(44px,12vw,92px);font-weight:400;line-height:.95;margin:18px 0 14px;color:#f4df9e}
+.amp{font-size:.45em;color:#fff;vertical-align:middle;font-style:italic}
+.subtitle{font-size:clamp(16px,4.2vw,23px);letter-spacing:.12em}
+.tap{margin:34px auto 0;border:1px solid #ead69a;background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:15px 30px;font-size:16px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.tap:active{transform:scale(.98)} .hint{margin-top:12px;font-size:12px;opacity:.65}
+#invite{display:none;background:linear-gradient(#f7f0df,#fffdf7);color:#263b34;padding:0 0 50px}
+.wrap{width:min(920px,100%);margin:auto}
+.video-wrap{position:relative;background:#000;width:100%;box-shadow:0 12px 35px rgba(0,0,0,.2)}
+video{display:block;width:100%;height:auto}
+.content{padding:38px 22px;text-align:center}
+.small{letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:#8d7040}
+h2{font-size:clamp(34px,9vw,62px);font-weight:400;margin:10px 0;color:#23483e}
+.divider{width:90px;height:1px;background:#c5a45f;margin:22px auto}
+.date{font-size:22px;letter-spacing:.08em;margin:10px 0;color:#70552d}
+.time{font-size:18px;margin:8px 0 24px}
+.venue{font-size:19px;line-height:1.6}
+.map{display:inline-block;margin-top:20px;text-decoration:none;color:#fff;background:#23483e;padding:12px 22px;border-radius:999px;font-family:Arial,sans-serif;font-size:14px}
+.note{margin-top:36px;font-style:italic;font-size:18px;line-height:1.7;color:#52625b}
+footer{font-size:11px;letter-spacing:.12em;opacity:.55;margin-top:35px}
+</style>
+</head>
+<body>
+<section id="cover" class="screen">
+  <div class="flower f1">✿</div><div class="flower f2">✿</div><div class="flower f3">❀</div>
+  <div class="cover-card">
+    <div class="kicker">A Wedding Invitation</div>
+    <h1>Elery <span class="amp">&amp;</span> Lalramsan</h1>
+    <div class="subtitle">Together with their families</div>
+    <button class="tap" id="openBtn">Tap to Open</button>
+    <div class="hint">Please tap to begin</div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="wrap">
+    <div class="video-wrap">
+      <video id="weddingVideo" controls playsinline preload="metadata">
+        <source src="wedding-invitation-video.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+    <div class="content">
+      <div class="small">Save the Date</div>
+      <h2>Elery &amp; Lalramsan</h2>
+      <div class="divider"></div>
+      <div class="date">12 November 2026</div>
+      <div class="time">11:30 AM</div>
+      <div class="venue"><strong>EFCI Church</strong><br>Saipum<br>Kolasib, Mizoram</div>
+      <a class="map" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=EFCI%20Church%2C%20Saipum%2C%20Kolasib%2C%20Mizoram">
+        View Location
+      </a>
+      <p class="note">With joyful hearts, we invite you to celebrate our special day with us.</p>
+      <footer>WITH LOVE • ELERY &amp; LALRAMSAN</footer>
+    </div>
+  </div>
+</section>
+
+<script>
+const openBtn=document.getElementById('openBtn');
+const cover=document.getElementById('cover');
+const invite=document.getElementById('invite');
+const video=document.getElementById('weddingVideo');
+openBtn.addEventListener('click', async () => {
+  cover.style.display='none';
+  invite.style.display='block';
+  window.scrollTo(0,0);
+  try { await video.play(); } catch(e) { /* browser may require another tap */ }
+});
+</script>
+</body>
+</html>
